@@ -1,10 +1,10 @@
-# GSTIC Strategic Planning Framework
+# MAGSTIC Strategic Planning Framework
 
-A structured, AI-driven strategic planning framework designed to run interactively via [Claude Code](https://docs.anthropic.com/en/docs/claude-code). GSTIC provides a complete pipeline from market discovery through execution measurement — ten phases across two stages.
+A structured, AI-driven strategic planning framework designed to run interactively via [Claude Code](https://docs.anthropic.com/en/docs/claude-code). MAGSTIC provides a complete pipeline from market discovery through execution measurement — ten phases across two stages.
 
-## What is GSTIC?
+## What is MAGSTIC?
 
-### Stage 1: Builder PM Stack (Phase 0) — Market Discovery
+### Stage 1: Builder PM Stack (Phase 0) — Market Discovery/Attractiveness
 
 Before you build strategy, validate the market. Phase 0 uses five sub-phases to determine whether an opportunity is worth pursuing and how to position within it.
 
