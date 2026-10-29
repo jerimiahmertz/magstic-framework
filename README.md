@@ -1,6 +1,6 @@
 # MAGSTIC Strategic Planning Framework
 
-A structured, AI-driven strategic planning framework designed to run interactively via [Claude Code](https://docs.anthropic.com/en/docs/claude-code). MAGSTIC provides a complete pipeline from market discovery through execution measurement — ten phases across two stages.
+A structured, AI-driven strategic planning framework designed to run interactively via [Claude Code](https://code.claude.com/docs). MAGSTIC provides a complete pipeline from market discovery through execution measurement — ten phases across two stages.
 
 ## What is MAGSTIC?
 
@@ -67,6 +67,7 @@ The framework uses four components that Claude Code picks up from the repo:
 magstic-framework/
 ├── CLAUDE.md                          # Orchestration instructions (Claude Code reads this)
 ├── README.md
+├── LICENSE
 │
 ├── agents/
 │   ├── market-analyst.md              # Phase 0: Market Discovery (all sub-phases)

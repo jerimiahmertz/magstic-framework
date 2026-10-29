@@ -1,0 +1,4 @@
+# Saved deliverables stay on your machine
+output/
+
+.DS_Store
