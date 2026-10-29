@@ -47,19 +47,21 @@ Then say:
 | `Run GSTIC for [project]` | Phases 1–5 only |
 | `Run Phase 0C for [project]` | Single phase (warns if prerequisites incomplete) |
 
-Claude Code reads `CLAUDE.md` on entry and orchestrates the workflow automatically.
+Claude Code loads `CLAUDE.md` when it starts in this folder. `CLAUDE.md` points it to the kickoff prompt, which runs the phases in order.
 
 ## How It Works
 
-The framework uses four components that Claude Code picks up from the repo:
+`CLAUDE.md` and the kickoff prompt tell Claude which of these files to read at each phase:
 
 **Agents** (`agents/`) — Persona definitions that shape how Claude thinks during each phase. The Market Analyst evaluates opportunities with investor-grade rigor. The Strategist pushes for specificity in goals and positioning. The Tactician builds executable plans. The Analyst designs measurement systems that drive decisions.
 
 **Templates** (`templates/`) — Structured output formats for each phase. These ensure deliverables are consistent, complete, and traceable across phases.
 
-**Prompts** (`prompts/`) — Orchestration logic that controls phase sequencing, transition criteria, and context handoffs between agents.
+**Prompts** (`prompts/`) — Orchestration logic that controls phase sequencing, exit criteria, and context handoffs between agents.
 
 **Examples** (`examples/`) — Worked examples showing completed GSTIC briefs for reference.
+
+**Saved deliverables** (`output/`) — Each phase is saved to `output/<project>/` once you confirm it (`0a-market-attractiveness.md` through `5-control.md`). You can stop, come back in a new session, revise a phase, or compile the brief later. `output/` is git-ignored, so your plans stay on your machine.
 
 ## Repo Structure
 
@@ -92,8 +94,10 @@ magstic-framework/
 │   ├── kickoff.md                     # Entry orchestration & context gathering
 │   └── phase-transitions.md           # Phase handoff logic & exit criteria
 │
-└── examples/
-    └── warm-leads-gstic.md            # Worked example
+├── examples/
+│   └── warm-leads-gstic.md            # Worked example
+│
+└── output/                            # Your saved deliverables (created on first save, git-ignored)
 ```
 
 ## Usage Modes
@@ -104,10 +108,9 @@ magstic-framework/
 | `Run market discovery for [project]` | Phase 0A through 0E |
 | `Run GSTIC for [project]` | Phase 1 through 5 |
 | `Run the Strategy phase for [project]` | Single phase (warns if prerequisites incomplete) |
-| `Revise the Tactics` | Re-enter a completed phase to refine |
-| `Show status` | See which phases are done |
-| `Compile brief` | Assemble all phases into one document |
-| `Skip to [phase]` | Jump ahead with dependency warning |
+| `Revise the Tactics` | Re-open a saved phase, update it, and flag later phases that may need changes |
+| `Show status` | List which phases are saved for the project and name the next one |
+| `Compile brief` | Assemble the saved phases into one document |
 
 ## Integrated Frameworks
 

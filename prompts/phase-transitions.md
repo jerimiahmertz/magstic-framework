@@ -6,8 +6,8 @@
 
 ### General Principles
 
-1. **Full pipeline always starts at Phase 0A. GSTIC-only always starts at Goals.** Never skip the designated entry point.
-2. **Each phase produces a deliverable.** No phase is complete until a structured output exists.
+1. **Start at the mode's entry point by default.** Full pipeline and market discovery start at Phase 0A; GSTIC-only starts at Goals. If the user asks for a later phase first, use the out-of-sequence message below — never skip a phase silently.
+2. **Each phase produces a deliverable.** No phase is complete until a structured output exists, its exit criteria below are met, and it is saved to `output/<project-slug>/`. Before a handoff, check the exit criteria; if any is unmet, name it and offer to close the gap first.
 3. **Reference prior phases.** Every new phase must explicitly cite decisions from earlier phases.
 4. **Offer iteration.** Always ask if the user wants to refine before moving forward.
 5. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
@@ -124,6 +124,8 @@
 - Unit economics and revenue model
 - Riskiest assumptions (Goals should address validating these)
 
+**Market-Discovery-Only Runs:** Stop after 0E instead of delivering the handoff message. Present the Market Discovery Brief Summary and ask whether to continue into Goals now.
+
 ---
 
 ## GSTIC Phase Transitions (Phases 1–5)
@@ -225,13 +227,13 @@
 
 ## Handling Out-of-Sequence Requests
 
-### User Wants to Skip a Phase
+### User Asks for a Later Phase First
 
-> "I can jump to [requested phase], but I want to flag that [prerequisite phases] haven't been completed yet. This means [specific risk]. Want to proceed anyway, or do a quick pass on the prerequisites first?"
+> "I can jump to [requested phase], but I want to flag that [prerequisite phases] haven't been completed yet. This means [specific risk]. In their place I'll assume [assumptions]. Want to proceed anyway, or do a quick pass on the prerequisites first?"
 
 ### User Wants to Go Back
 
-> "Absolutely. Let me pull up the [requested phase] deliverable. What would you like to change? I'll propagate any updates to downstream phases."
+> "Absolutely. Let me pull up the [requested phase] deliverable from `output/<project-slug>/`. What would you like to change? I'll update the file and propagate any changes to downstream phases."
 
 ### User Provides New Information Mid-Phase
 

@@ -32,17 +32,23 @@ Define objectives, develop strategy, plan tactics, build execution roadmap, and 
 
 ## How to Use This Framework
 
-When a user enters this repo and asks to run the framework:
+When a user asks to run the framework, or a specific phase, for a project:
 
-### Full Pipeline ("Run full GSTIC" or "Run Builder PM Stack + GSTIC")
+1. **Read the kickoff prompt** at `prompts/kickoff.md` — this is your orchestration guide for every mode below
+2. **Gather context once** (kickoff Step 0) before the first phase, whatever the entry point
+3. **Activate agents** — each phase has a dedicated agent persona in `agents/`
+4. **Use templates** from `templates/` to structure outputs at each phase
+5. **Follow phase transitions** defined in `prompts/phase-transitions.md` — check each phase's exit criteria before handing off
+6. **Save each deliverable** to `output/<project-slug>/` once the user confirms it
+
+### Full Pipeline ("Run full pipeline for [project]")
 1. Start with Phase 0A and proceed sequentially through 0E
-2. Use the Market Discovery Brief from 0E as the entry document for Phase 1
+2. Use the Market Discovery Brief Summary from 0E as the entry document for Phase 1
 3. Continue through Phases 1–5 (Goals → Strategy → Tactics → Implementation → Control)
 
 ### GSTIC Only ("Run GSTIC for [project]")
-1. Read the kickoff prompt at `prompts/kickoff.md`
-2. Start at Phase 1: Goals and proceed through Phase 5: Control
-3. If market context is thin, suggest running Phase 0 first
+1. Start at Phase 1: Goals and proceed through Phase 5: Control
+2. If market context is thin, suggest running Phase 0 first
 
 ### Builder PM Stack Only ("Run market discovery for [project]")
 1. Start at Phase 0A and proceed through 0E
@@ -50,7 +56,7 @@ When a user enters this repo and asks to run the framework:
 
 ### Single Phase ("Run Phase 0C for [project]" or "Run Tactics for [project]")
 1. Jump to the requested phase
-2. Warn if prerequisite phases haven't been completed
+2. Warn which earlier phases are missing from `output/<project-slug>/`
 3. State what assumptions you're making without upstream deliverables
 
 ---
@@ -97,14 +103,38 @@ When a user enters this repo and asks to run the framework:
 
 ## Orchestration Behavior
 
-1. **Always start at the appropriate entry point.** Full pipeline starts at 0A. GSTIC-only starts at Goals. Never skip Goals in a GSTIC run.
-2. **Each phase must produce a deliverable** before transitioning to the next phase.
-3. **Ask clarifying questions** at the start of each phase — don't assume context.
-4. **Reference prior phase outputs** when working on subsequent phases.
-5. **Offer iteration** at the end of each phase before moving on.
-6. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
-7. If the user says "full pipeline" or "run all phases," proceed through all ten phases sequentially with brief confirmation between each.
-8. If the user names a specific phase, jump directly but warn if prerequisites haven't been completed.
+1. **Start at the mode's entry point by default.** Full pipeline and market discovery start at 0A. GSTIC-only starts at Goals.
+2. **A named phase can run out of order.** If the user asks for a specific phase, run it — but first warn which earlier phases are missing and state the assumptions you're making in their place.
+3. **Each phase must produce a deliverable** that meets its exit criteria in `prompts/phase-transitions.md` before transitioning to the next phase.
+4. **Ask clarifying questions** at the start of each phase — but never re-ask what Step 0 or an earlier phase already answered.
+5. **Reference prior phase outputs** when working on subsequent phases — read them from `output/<project-slug>/`.
+6. **Offer iteration** at the end of each phase before moving on.
+7. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
+8. If the user says "full pipeline" or "run all phases," proceed through all ten phases sequentially with brief confirmation between each.
+
+---
+
+## Saving Deliverables
+
+| Phase | File |
+|-------|------|
+| 0A: Market Attractiveness | `output/<project-slug>/0a-market-attractiveness.md` |
+| 0B: Opportunity Sizing | `output/<project-slug>/0b-opportunity-sizing.md` |
+| 0C: Customer Discovery | `output/<project-slug>/0c-customer-discovery.md` |
+| 0D: Value & Positioning | `output/<project-slug>/0d-value-positioning.md` |
+| 0E: Business Model | `output/<project-slug>/0e-business-model.md` |
+| 1: Goals | `output/<project-slug>/1-goals.md` |
+| 2: Strategy | `output/<project-slug>/2-strategy.md` |
+| 3: Tactics | `output/<project-slug>/3-tactics.md` |
+| 4: Implementation | `output/<project-slug>/4-implementation.md` |
+| 5: Control | `output/<project-slug>/5-control.md` |
+| Compiled brief | `output/<project-slug>/gstic-brief.md` |
+
+- `<project-slug>` is the project name in lowercase kebab-case (e.g., "Self-Serve Trial" → `self-serve-trial`).
+- Save a phase only after the user confirms it. When a phase is revised, overwrite its file.
+- The Market Discovery Brief Summary lives in Section 5 of `0e-business-model.md`.
+- If `output/` holds more than one project, ask which one the user means.
+- `output/` is git-ignored, so deliverables stay on the user's machine.
 
 ---
 
@@ -138,8 +168,7 @@ Use these signals to calibrate depth, vocabulary, and which phases to emphasize.
 | `Run full pipeline for [project]` | Phase 0A through Phase 5 |
 | `Run market discovery for [project]` | Phase 0A through 0E only |
 | `Run GSTIC for [project]` | Phase 1 through 5 only |
-| `Run [phase] for [project]` | Single phase execution |
-| `Revise [phase]` | Re-enter a completed phase |
-| `Show status` | Display which phases are complete |
-| `Compile brief` | Generate the full document |
-| `Skip to [phase]` | Jump ahead (with dependency warning) |
+| `Run [phase] for [project]` | Single phase — warns about missing earlier phases and states assumptions |
+| `Revise [phase]` | Re-open a saved phase, update its file, and flag later phases that may need changes |
+| `Show status` | List which phase files exist in `output/<project-slug>/` and name the next phase |
+| `Compile brief` | Assemble the saved phases into `output/<project-slug>/gstic-brief.md` |
