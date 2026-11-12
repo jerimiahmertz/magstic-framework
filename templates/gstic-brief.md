@@ -1,4 +1,4 @@
-# GSTIC Strategic Brief — [Project Name]
+# MAGSTIC Strategic Brief — [Project Name]
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## 0. Market Discovery Summary
 
-*Include this section if Phase 0 (Builder PM Stack) was completed. If GSTIC was run without Phase 0, omit this section or note "Market discovery not conducted — assumptions stated in Strategy phase."*
+*If Phase 0 was completed, insert section 5 (Market Discovery Brief Summary) of `output/<project-slug>/0e-business-model.md` verbatim in place of the placeholders below. If GSTIC was run without Phase 0, replace this section with one line: "Market discovery not conducted — assumptions stated in Strategy phase."*
 
 ### Market Attractiveness
 [1-2 sentence verdict from Phase 0A: PESTEL assessment, Five Forces structural attractiveness, Wardley Map strategic plays]
@@ -36,31 +36,31 @@
 
 ## 1. Goals
 
-[Paste completed Goals Worksheet content here]
+[Insert `output/<project-slug>/1-goals.md`]
 
 ---
 
 ## 2. Strategy
 
-[Paste completed Strategy Canvas content here]
+[Insert `output/<project-slug>/2-strategy.md`]
 
 ---
 
 ## 3. Tactics
 
-[Paste completed Tactics Plan content here]
+[Insert `output/<project-slug>/3-tactics.md`]
 
 ---
 
 ## 4. Implementation
 
-[Paste completed Implementation Roadmap content here]
+[Insert `output/<project-slug>/4-implementation.md`]
 
 ---
 
 ## 5. Control
 
-[Paste completed Control Dashboard content here]
+[Insert `output/<project-slug>/5-control.md`]
 
 ---
 
@@ -104,4 +104,4 @@
 
 ---
 
-*Document generated via GSTIC Framework — [Date]*
+*Document generated via MAGSTIC Framework — [Date]*

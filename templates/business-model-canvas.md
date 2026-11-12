@@ -161,7 +161,7 @@
 
 ## 5. Market Discovery Brief Summary
 
-*This section summarizes all Builder PM Stack findings for handoff to the Strategist.*
+*This section summarizes all Phase 0 (market discovery) findings for handoff to the Strategist.*
 
 ### Market Attractiveness
 [1–2 sentence verdict from Phase 0A]
@@ -185,4 +185,19 @@
 
 ---
 
-*Builder PM Stack Complete: [ ] Yes / [ ] No — Proceed to Phase 1: Goals*
+## 6. Sources
+
+*Every `[S:n]` tag above points to a row here. Cite only sources read in this session; use `[E]` with the calculation shown or `[?]` when none exists.*
+
+| # | Source (publisher, title, year) | Location (URL or `inputs/` file) | What was taken from it |
+|---|--------------------------------|----------------------------------|------------------------|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+
+**Unverified `[K]` claims worth checking:**
+- [Claim] — [How to verify]
+
+---
+
+*Phase 0 Complete: [ ] Yes / [ ] No — Proceed to Phase 1: Goals*

@@ -139,4 +139,4 @@ Each metric's action trigger lives in its row above. This table says who respond
 
 ---
 
-*Phase 5 Complete — GSTIC Framework Complete ✓*
+*Phase 5 Complete — MAGSTIC Framework Complete ✓*

@@ -30,9 +30,7 @@ Example (Bottom-Up):
 
 **TAM Estimate:** $[X]
 
-**Sources / Basis:**
-- [Source 1]
-- [Source 2]
+**Sources:** [S:n] tags pointing to the Sources table below
 
 ---
 
@@ -79,7 +77,7 @@ SAM: $___
 ## 5. Growth Projections
 
 **Market CAGR:** [X]%
-**Basis:** [Industry report / historical trend / analogous market]
+**Basis:** [`[S:n]` industry report or historical trend, or `[E]` with reasoning from an analogous market]
 
 | Year | TAM | SAM | SOM (Est.) | Growth Driver |
 |------|-----|-----|------------|---------------|
@@ -110,6 +108,21 @@ SAM: $___
 | 1 | | | |
 | 2 | | | |
 | 3 | | | |
+
+---
+
+## 8. Sources
+
+*Every `[S:n]` tag above points to a row here. Cite only sources read in this session; use `[E]` with the calculation shown or `[?]` when none exists.*
+
+| # | Source (publisher, title, year) | Location (URL or `inputs/` file) | What was taken from it |
+|---|--------------------------------|----------------------------------|------------------------|
+| 1 | | | |
+| 2 | | | |
+| 3 | | | |
+
+**Unverified `[K]` claims worth checking:**
+- [Claim] — [How to verify]
 
 ---
 

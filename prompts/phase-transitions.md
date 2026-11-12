@@ -1,4 +1,4 @@
-# Phase Transitions — GSTIC
+# Phase Transitions — MAGSTIC
 
 ---
 
@@ -6,15 +6,17 @@
 
 ### General Principles
 
-1. **Full pipeline always starts at Phase 0A. GSTIC-only always starts at Goals.** Never skip the designated entry point.
-2. **Each phase produces a deliverable.** No phase is complete until a structured output exists.
-3. **Reference prior phases.** Every new phase must explicitly cite decisions from earlier phases.
-4. **Offer iteration.** Always ask if the user wants to refine before moving forward.
-5. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
+1. **Start at the entry point's first phase by default.** A full pipeline or market-discovery run begins at 0A; a GSTIC run begins at Goals. If the user asks for a later phase first, use the out-of-sequence message below — never skip a phase silently.
+2. **Each phase produces a deliverable.** No phase is complete until a structured output exists, passes the exit criteria below, and is saved to `output/<project-slug>/`.
+3. **Exit criteria are a gate.** Before asking for confirmation, print the phase's checklist with each item ticked or marked open. Open items block the transition.
+4. **Reference prior phases.** Every new phase must explicitly cite decisions from earlier phases — read them from `output/<project-slug>/`.
+5. **Offer iteration.** Always ask if the user wants to refine before moving forward.
+6. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
+7. **Handoff order.** Checklist → iteration question → end the turn → on confirmation, save the file → handoff message. Handoff text lives only in this file.
 
 ---
 
-## Phase 0 Transitions (Builder PM Stack)
+## Phase 0 Transitions (Market Discovery)
 
 ### Transition: 0A Market Attractiveness → 0B Opportunity Sizing
 
@@ -25,7 +27,9 @@
 - [ ] Competitive landscape mapped
 - [ ] Attractiveness Scorecard completed with weighted score
 - [ ] Recommendation issued (Proceed / Caution / Pivot / No-Go)
+- [ ] Every number and rating carries a provenance tag; Sources table filled in
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/0a-market-attractiveness.md`
 
 **Handoff Message:**
 
@@ -45,7 +49,9 @@
 - [ ] SOM projected for Y1, Y3, Y5
 - [ ] Sensitivity analysis on 3+ assumptions
 - [ ] Assumptions logged with confidence ratings
+- [ ] Every number and rating carries a provenance tag; Sources table filled in
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/0b-opportunity-sizing.md`
 
 **Handoff Message:**
 
@@ -66,7 +72,9 @@
 - [ ] Four Forces of Progress assessed with net verdict
 - [ ] Draft positioning statement written
 - [ ] Open validation questions listed
+- [ ] Every number and rating carries a provenance tag; Sources table filled in
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/0c-customer-discovery.md`
 
 **Handoff Message:**
 
@@ -88,7 +96,9 @@
 - [ ] Playing to Win cascade with capability gaps
 - [ ] Differentiation thesis written
 - [ ] Alternatives considered and rejected
+- [ ] Every number and rating carries a provenance tag; Sources table filled in
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/0d-value-positioning.md`
 
 **Handoff Message:**
 
@@ -110,7 +120,9 @@
 - [ ] Opportunity Solution Tree with 3 opportunities and experiments
 - [ ] Top 3 riskiest assumptions ranked
 - [ ] Market Discovery Brief Summary produced
+- [ ] Every number and rating carries a provenance tag; Sources table filled in
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/0e-business-model.md`
 
 **Handoff Message:**
 
@@ -136,6 +148,7 @@
 - [ ] Non-goals are listed
 - [ ] Time horizon is set
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/1-goals.md`
 
 **Handoff Message:**
 
@@ -152,10 +165,11 @@
 **Exit Criteria for Strategy:**
 - [ ] Target segments defined and prioritized
 - [ ] Value proposition articulated per segment
-- [ ] Positioning statement drafted
+- [ ] Positioning statement drafted, including what we're choosing not to be
 - [ ] Competitive landscape mapped
 - [ ] Key assumptions listed
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/2-strategy.md`
 
 **Handoff Message:**
 
@@ -170,11 +184,12 @@
 ### Transition: Tactics → Implementation
 
 **Exit Criteria for Tactics:**
-- [ ] Marketing mix defined across all 5 dimensions (Product, Price, Incentives, Communication, Distribution)
+- [ ] Marketing mix covers all 5 dimensions (Product, Price, Incentives, Communication, Distribution) — each has at least one tactic or `N/A — [reason]`
 - [ ] Each tactic traced to a strategic choice
 - [ ] Tactics prioritized (method stated)
 - [ ] Quick wins and strategic bets identified
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/3-tactics.md`
 
 **Handoff Message:**
 
@@ -184,24 +199,25 @@
 - Prioritized tactics list
 - Dependencies between tactics
 - Resource constraints mentioned
-- Quick wins (these should land in early phases)
+- Quick wins (these should land in early stages)
 
 ### Transition: Implementation → Control
 
 **Exit Criteria for Implementation:**
-- [ ] Phased roadmap with dates and owners
+- [ ] Staged roadmap (Stage 0–3) with dates and owners
 - [ ] RACI matrix for major workstreams
 - [ ] Dependency map created
 - [ ] Risk register with top 5 risks
 - [ ] Go/no-go decision points defined
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/4-implementation.md`
 
 **Handoff Message:**
 
-> "The execution plan is built — [N] phases from [start] to [end]. Now switching to the **Analyst**. Let's make sure we know what success looks like in real-time and what triggers a course correction."
+> "The execution plan is built — [N] stages from [start] to [end]. Now switching to the **Analyst**. Let's make sure we know what success looks like in real-time and what triggers a course correction."
 
 **Context to Carry Forward:**
-- Phase milestones and dates (these become measurement checkpoints)
+- Stage milestones and dates (these become measurement checkpoints)
 - All KPIs from Goals (these must appear in the control framework)
 - Risk register items (some need monitoring metrics)
 - Decision points (these need data to inform go/no-go)
@@ -216,22 +232,23 @@
 - [ ] Feedback loops and escalation paths defined
 - [ ] Every Goal KPI is accounted for
 - [ ] User has confirmed satisfaction
+- [ ] Saved to `output/<project-slug>/5-control.md`
 
 **Completion Message:**
 
-> "GSTIC plan is complete for [project name]. All phases have deliverables. Would you like me to compile everything into a single brief, or would you like to go back and iterate on any phase?"
+> "The plan is complete for [project name]. Every phase has a deliverable saved in `output/<project-slug>/`. Would you like me to compile everything into a single brief, or would you like to go back and iterate on any phase?"
 
 ---
 
 ## Handling Out-of-Sequence Requests
 
-### User Wants to Skip a Phase
+### User Asks for a Later Phase First
 
-> "I can jump to [requested phase], but I want to flag that [prerequisite phases] haven't been completed yet. This means [specific risk]. Want to proceed anyway, or do a quick pass on the prerequisites first?"
+> "I can jump to [requested phase], but I want to flag that [prerequisite phases] haven't been completed yet. This means [specific risk]. In their place I'll assume [assumptions]. Want to proceed anyway, or do a quick pass on the prerequisites first?"
 
 ### User Wants to Go Back
 
-> "Absolutely. Let me pull up the [requested phase] deliverable. What would you like to change? I'll propagate any updates to downstream phases."
+> "Absolutely. Let me pull up the [requested phase] deliverable from `output/<project-slug>/`. What would you like to change? I'll update the file and flag which downstream phases need a second look."
 
 ### User Provides New Information Mid-Phase
 
