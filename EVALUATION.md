@@ -4,6 +4,30 @@
 **Scope:** every file in the repo (24 files), read in full, plus the sibling repo jerimiahmertz/gstic-framework (v1) for comparison.
 **Method:** eight independent review lenses produced 144 candidate findings; each was checked by two adversarial verifiers (factual accuracy and materiality; correctness of the fix) and 58 were refuted and dropped. A completeness critic then added three lenses (evidence acquisition, example consistency, rendering and accessibility) whose 40 candidates went through the same check, 15 surviving. The 126 survivors are merged below into 66 findings. Finding ids in parentheses (F1, G12) refer to the raw candidates.
 
+## Status: fixes applied (12 November 2026)
+
+The seven "Fix first" items were applied on branch `claude/magstic-repo-evaluation-07m4y5` after this report was written. The findings below still cite the pre-fix layout (`magstic-framework/...` paths and the old line numbers).
+
+| # | Item | Status |
+|---|------|--------|
+| 1 | Flatten the repo; delete the zip, both `.DS_Store` files, the nested README | Done. |
+| 2 | Restore the nine stripped files | Done. The source was `jerimiahmertz/gstic-framework` as repaired in October 2026, not v1; its GSTIC files already carry several fixes from this report (Owner column, action trigger on every metric, Stage 0–3 roadmap naming, positioning tradeoff, no re-asking of Step 0 answers). |
+| 3 | Replace the example that names a real company | Done: replaced with the sibling repo's fictional, complete Tidewell example. Not done: purging the old file from git history, which needs a force-push to `master` and the same rewrite in gstic-framework (commands below). Quotes of the old example in this report were redacted. |
+| 4 | Wire the orchestration | Done: `CLAUDE.md` imports `prompts/kickoff.md` and `prompts/phase-transitions.md`, requires reading the agent and template files before each deliverable, makes exit criteria a gate, and keeps handoff text in one place. |
+| 5 | Per-phase persistence | Done: `output/<project-slug>/` with one file per phase; Show status, Revise, and Compile brief read from disk. No separate STATUS.md: the phase files are the status, matching gstic-framework. |
+| 6 | Evidence step and provenance | Done: Evidence Rules in `agents/market-analyst.md`, a gather-evidence step in every Phase 0 phase, provenance tags, a Sources table in all five Phase 0 templates, an `inputs/<project-slug>/` convention, and a provenance line in the Phase 0 exit criteria. |
+| 7 | Hygiene and naming | Done: `.gitignore`, `LICENSE`, `.editorconfig`, MAGSTIC naming pass, one command table. Not done: the v2.0.0 tag, which should point at the merge commit. |
+
+History purge, if wanted (owner's decision; it rewrites `master` and every clone, including the earlier commits on this branch whose report quoted the old example):
+
+```bash
+pip install git-filter-repo
+git filter-repo --invert-paths --path magstic-framework/examples/warm-leads-gstic.md --path magstic-framework.zip
+git push --force --all origin
+```
+
+Run the equivalent in gstic-framework (`--path gstic-framework/examples/warm-leads-gstic.md --path examples/warm-leads-gstic.md`), then ask GitHub Support to clear cached views of the old commits.
+
 ## Summary
 
 The framework does not run as documented. The README Quick Start launches `claude` in the clone root, but the only CLAUDE.md sits one level down at magstic-framework/CLAUDE.md, so a user who follows the three documented lines gets a plain Claude Code session with no personas, templates or phase sequencing. Even after that is fixed, CLAUDE.md sends only the GSTIC-only mode to prompts/kickoff.md and nothing at all to prompts/phase-transitions.md, which is a v2 regression (v1 listed both as top-level instructions), and nothing is ever saved per phase, so `Show status`, `Revise` and `Compile brief` rest on chat memory that compaction erases.
@@ -110,17 +134,17 @@ The restored example still contains the real company, system and person names (f
 - Fix: Copy the intact file from gstic-framework/examples/warm-leads-gstic.md, anonymise it (finding 10), then either retitle its header and README.md:62 to "abbreviated illustrative example (GSTIC phases only)" or complete it against every exit criterion. Add to CLAUDE.md Orchestration Behavior: "Before producing the first Goals deliverable, read examples/warm-leads-gstic.md for the concreteness expected in KPI targets, baselines, owners and dates; the template governs structure." Long term, build a fictional full-fidelity set examples/<fictional>/0a through 5 plus a compiled brief.
 
 **10. The example publishes a real company's internal initiative and a named employee in a public MIT repo** (high, M; F95, F116)
-- Evidence: warm-leads-gstic.md:41 "First American's Owners Portal captures rich behavioral signals from homeowners"; :76 "Owner: JR De Los Reyes"; :109 "FAST file + Agent OID"; :118 "Dscope/Identity team"; :172 "First American owns the OP behavioral data AND the title/agent identity graph"; :286-287 a scoring formula and threshold; :330-372 FY2026 roadmap dates. The remote is the public jerimiahmertz/magstic-framework; the same text is in the zip, in both commits, and in the sibling public repo gstic-framework.
+- Evidence: warm-leads-gstic.md:41 "[Company]'s customer portal captures rich behavioral signals from homeowners"; :76 "Owner: [named employee]"; :109 "[internal record system] + [agent ID]"; :118 "[identity team]"; :172 "[Company] owns the portal behavioral data AND the identity graph"; :286-287 a scoring formula and threshold; :330-372 FY2026 roadmap dates. The remote is the public jerimiahmertz/magstic-framework; the same text is in the zip, in both commits, and in the sibling public repo gstic-framework.
 - Impact: Disclosure of an unannounced lead-generation program, its systems, targets, dates and model, plus a third party's name and role, with no evident consent. Reputationally sensitive for the company and the author.
-- Fix: Rewrite with a fictional company (check the name has no real title-company match), generic system names ("Homeowner Portal", "Agent Mobile App", "identity service"), roles instead of people, and altered targets and dates. Purge history: `git filter-repo --path magstic-framework/examples/warm-leads-gstic.md --path magstic-framework.zip --invert-paths`, re-add the fictional file, force-push all branches, open a GitHub Support ticket for cached views. Apply the same rewrite to jerimiahmertz/gstic-framework or the purge achieves nothing. Alternatively obtain written sign-off from the company and the named person.
+- Fix: Rewrite with a fictional company (check the name has no real-company match), generic system names ("Homeowner Portal", "Agent Mobile App", "identity service"), roles instead of people, and altered targets and dates. Purge history: `git filter-repo --path magstic-framework/examples/warm-leads-gstic.md --path magstic-framework.zip --invert-paths`, re-add the fictional file, force-push all branches, open a GitHub Support ticket for cached views. Apply the same rewrite to jerimiahmertz/gstic-framework or the purge achieves nothing. Alternatively obtain written sign-off from the company and the named person.
 
 **11. Example numbers do not trace: two of three Goal KPIs vanish in Control, and Strategy names two different targets** (medium, M; G12, G13)
-- Evidence: warm-leads-gstic.md:88 "KPI: Lead-to-close conversion rate" and :109 "% of OP users matched to FAST file + Agent OID" appear nowhere in Phase 5 (397-412); the North Star at :397 counts "opened title orders", a different funnel stage, with no target. :162 "Target Segment: Homeowners in Owners Portal" but :167 "Value Proposition: For Direct Division agents". analyst.md:463 requires "Every KPI from Phase 1 (Goals) must appear in the measurement framework".
+- Evidence: warm-leads-gstic.md:88 "KPI: Lead-to-close conversion rate" and :109 "% of OP users matched to [internal record system] + [agent ID]" appear nowhere in Phase 5 (397-412); the North Star at :397 counts "[closed orders]", a different funnel stage, with no target. :162 "Target Segment: Homeowners in customer portal" but :167 "Value Proposition: For [sales division] agents". analyst.md:463 requires "Every KPI from Phase 1 (Goals) must appear in the measurement framework".
 - Impact: The artefact meant to show traceability breaks the Goals-to-Control chain README.md:31 advertises, and the positioning statement's target slot names a party that is not the declared segment.
 - Fix: Add a three-row Goal KPI Coverage Check to the example's Phase 5, label the North Star as the leading proxy for the close rate and give it a target, restructure Phase 2 into two named segments (agents as the pipeline's customer, homeowners as the lead population with a guardrail), and add a Strategic Link column to the tactics table.
 
 **12. Example owners, acronyms and its one external dependency are undefined** (low, S; G17, G19, G24)
-- Evidence: :118 "Owner: Dscope/Identity team" while tactician.md:424 says "person, not team"; the Tactics (200-206) and Implementation (310-316) tables have no Owner column; nine terms are never defined (OP, FAST, Agent OID, Azure OID, Dscope, FA Mobile, Direct Division, TP, Amplitude); :359 "Segment integration (TP adopts Q2)" is the only external dependency and appears in no dependency or risk list.
+- Evidence: :118 "Owner: [identity team]" while tactician.md:424 says "person, not team"; the Tactics (200-206) and Implementation (310-316) tables have no Owner column; nine terms are never defined (OP, FAST, Agent OID, Azure OID, [identity team], [agent mobile app], [sales division], TP, Amplitude); :359 "Segment integration (TP adopts Q2)" is the only external dependency and appears in no dependency or risk list.
 - Impact: Readers cannot tell whether leads route to the agent of record or a pooled list, and Claude learns that team-level or absent ownership is acceptable.
 - Fix: While anonymising, add Owner columns, a Glossary in the gstic-brief.md:98 format, and a two-row Dependencies list under Phase 4 with a fallback.
 
