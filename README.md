@@ -53,9 +53,9 @@ Claude Code loads `CLAUDE.md` when it starts in this folder. `CLAUDE.md` imports
 ## What to Expect
 
 - **Questions first.** Claude asks five to seven context questions once, then about six discovery questions per phase, each batch in one message. Answer what you can, or say "use your judgment" and Claude records its assumptions.
-- **Bring evidence.** Phase 0 is only as good as its inputs. Put research, interview notes, metrics exports, and competitor material in `inputs/<project>/` (git-ignored) or give Claude paths and URLs. Every number in a Phase 0 deliverable carries a tag that says whether it came from you, a source, Claude's own knowledge, or an estimate.
+- **Bring evidence.** Phase 0 is only as good as its inputs. Put research, interview notes, metrics exports, and competitor material in `inputs/<project-slug>/` (the project name in lowercase with hyphens, e.g. `inputs/self-serve-trial/`; git-ignored) or give Claude paths and URLs. Every number in a Phase 0 deliverable carries a tag that says whether it came from you, a source, Claude's own knowledge, or an estimate.
 - **A full run is long.** Ten phases, ten deliverables, and a review checkpoint after each. Market discovery alone is five phases; GSTIC alone is five. You can stop at any checkpoint and resume later.
-- **Everything is saved.** Each phase is written to `output/<project>/` once you confirm it. Start a new session in this folder and say "Show status" to pick up where you left off.
+- **Everything is saved.** Each phase is written to `output/<project-slug>/` once you confirm it. Start a new session in this folder and say "Show status" to pick up where you left off.
 
 ## How It Works
 
@@ -69,7 +69,7 @@ Claude Code loads `CLAUDE.md` when it starts in this folder. `CLAUDE.md` imports
 
 **Examples** (`examples/`) — A complete, fictional GSTIC run compiled into a brief, showing the level of specificity expected.
 
-**Saved deliverables** (`output/`) — Each phase is saved to `output/<project>/` once you confirm it (`0a-market-attractiveness.md` through `5-control.md`, plus the compiled brief). You can stop, come back in a new session, revise a phase, or compile the brief later. `output/` and `inputs/` are git-ignored, so your plans and source material stay on your machine.
+**Saved deliverables** (`output/`) — Each phase is saved to `output/<project-slug>/` once you confirm it (`0a-market-attractiveness.md` through `5-control.md`, plus the compiled brief). You can stop, come back in a new session, revise a phase, or compile the brief later. `output/` and `inputs/` are git-ignored, so your plans and source material stay on your machine.
 
 ## Repo Structure
 
@@ -78,6 +78,7 @@ magstic-framework/
 ├── CLAUDE.md                          # Orchestration instructions (Claude Code loads this)
 ├── README.md
 ├── LICENSE
+├── EVALUATION.md                      # Repository review and fix status (November 2026)
 ├── agents/
 │   ├── market-analyst.md              # Phase 0: Market Discovery (all sub-phases)
 │   ├── strategist.md                  # Phases 1–2: Goals & Strategy

@@ -231,4 +231,4 @@ Translate market understanding and positioning into a testable business model. D
 
 When Phase 0E is complete, the Market Discovery Brief Summary serves as the entry document for Phase 1: Goals. The Strategist agent picks up from this summary and uses it to frame the goal-setting conversation.
 
-The handoff message is the 0E → Goals transition in `prompts/phase-transitions.md`. Deliver it after `0e-business-model.md` is saved.
+The handoff message is the 0E → Goals transition in `prompts/phase-transitions.md`. Deliver it after `0e-business-model.md` is saved, with the closing line for the entry point: the full pipeline continues into Goals; a market-discovery run asks whether to continue.

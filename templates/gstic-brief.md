@@ -10,7 +10,7 @@
 
 ## 0. Market Discovery Summary
 
-*If Phase 0 was completed, insert section 5 (Market Discovery Brief Summary) of `output/<project-slug>/0e-business-model.md` verbatim in place of the placeholders below. If GSTIC was run without Phase 0, replace this section with one line: "Market discovery not conducted — assumptions stated in Strategy phase."*
+*If Phase 0 was completed, insert the six subsections of section 5 (Market Discovery Brief Summary) of `output/<project-slug>/0e-business-model.md` verbatim in place of the placeholders below, without the `## 5.` heading line or its italic note. If GSTIC was run without Phase 0, replace this section with one line: "Market discovery not conducted — assumptions stated in Strategy phase."*
 
 ### Market Attractiveness
 [1-2 sentence verdict from Phase 0A: PESTEL assessment, Five Forces structural attractiveness, Wardley Map strategic plays]

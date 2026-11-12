@@ -30,7 +30,7 @@ Example (Bottom-Up):
 
 **TAM Estimate:** $[X]
 
-**Sources:** [S:n] tags pointing to the Sources table below
+**Sources:** [`[S:n]` tag for each figure used in the calculation above, pointing to the Sources table below]
 
 ---
 

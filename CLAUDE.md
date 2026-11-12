@@ -95,7 +95,7 @@ The agent files are plain Markdown personas. Adopt the persona in this conversat
 ## Orchestration Behavior
 
 1. **Entry points.** A full pipeline or market-discovery run starts at 0A. A GSTIC run starts at Goals. A named phase runs out of order only after the out-of-sequence message in `prompts/phase-transitions.md` (missing phases, the risk, and the assumptions you will make in their place).
-2. **Step 0 runs once per project**, whatever the entry point, and its answers are never re-asked. Check `output/<project-slug>/` first; if phase files exist, read them, summarize where the project stands, and continue from the next incomplete phase.
+2. **Step 0 runs once per project**, whatever the entry point, and its answers are never re-asked. Check `output/<project-slug>/` first; if `0-context.md` exists, read it and any phase files, summarize where the project stands, and continue from the next incomplete phase. If it is missing, ask Step 0 once and save it.
 3. **Discovery questions go out in one message.** Post the phase's questions as a single numbered list and end the turn. Drop any question that Step 0 or an earlier phase already answered. The user may answer a subset or say "use your judgment"; record what you assumed in the deliverable's assumptions log and do not re-ask.
 4. **Exit criteria are a gate.** A phase is complete only when every exit-criteria item for it in `prompts/phase-transitions.md` is met. Print that checklist with ticks, ask the phase's iteration question, and wait for confirmation.
 5. **Save, then hand off.** On confirmation, save the deliverable (table below), then deliver the phase's handoff message from `prompts/phase-transitions.md`. Handoff text lives only there.
@@ -107,6 +107,7 @@ The agent files are plain Markdown personas. Adopt the persona in this conversat
 
 | Phase | File |
 |-------|------|
+| Step 0 context | `output/<project-slug>/0-context.md` |
 | 0A | `output/<project-slug>/0a-market-attractiveness.md` |
 | 0B | `output/<project-slug>/0b-opportunity-sizing.md` |
 | 0C | `output/<project-slug>/0c-customer-discovery.md` |

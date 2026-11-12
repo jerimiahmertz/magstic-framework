@@ -1,10 +1,16 @@
-# GSTIC Strategic Brief — Tidewell Self-Serve Trial
+# MAGSTIC Strategic Brief — Tidewell Self-Serve Trial
 
-> **Fictional example.** Tidewell, its numbers, and its plans are invented to show a complete GSTIC run, compiled with `templates/gstic-brief.md`. Any resemblance to a real company is coincidental. Owners are role titles, not people.
+> **Fictional example.** Tidewell, its numbers, and its plans are invented to show a complete GSTIC run (Phases 1–5, without Phase 0), compiled with `templates/gstic-brief.md`. Any resemblance to a real company is coincidental. Owners are role titles, not people.
 
 ## Executive Summary
 
 Tidewell's Starter plan ($79 a month for shops with 1–4 technicians) is sold only through sales today, and onboarding costs about $1,200 per account — more than a year of Starter revenue — so sales turns most small shops away. This plan opens a self-serve channel in FY2027: owners sign up, set up, and pay without a sales call. Success means 45% of trials sending a first invoice within 7 days by September 2027, then 250 new paid self-serve accounts a month at a CAC payback of 6 months or less by December 2027. We target owner-operators of 1–4 technician shops and position against field-service suites on speed of setup. One North Star (weekly invoicing accounts) and stage gates in February, June, and September tell us whether it's working.
+
+---
+
+## 0. Market Discovery Summary
+
+Market discovery not conducted — assumptions stated in Strategy phase.
 
 ---
 
@@ -568,7 +574,21 @@ Each metric's action trigger lives in its row above. Here the PM is the Head of 
 | Finance Business Partner, Growth | Owns the CAC model | M | H | Monthly payback review |
 | Customer Success Manager, Self-Serve | Absorbs self-serve support load | H | M | Weekly ticket review |
 
-### C. Glossary
+### C. Phase Completion Tracker
+| Phase | Status | Date Completed | Key Output |
+|-------|--------|---------------|------------|
+| 0A: Market Attractiveness | ⏭️ Skipped | | |
+| 0B: Opportunity Sizing | ⏭️ Skipped | | |
+| 0C: Customer Discovery | ⏭️ Skipped | | |
+| 0D: Value & Positioning | ⏭️ Skipped | | |
+| 0E: Business Model | ⏭️ Skipped | | |
+| 1: Goals | ✅ | Dec 1, 2026 | Three objectives: 250 self-serve accounts a month, 45% activation, ≤ 6-month payback |
+| 2: Strategy | ✅ | Dec 3, 2026 | Owner-operators of 1–4 technician shops, positioned on speed of setup |
+| 3: Tactics | ✅ | Dec 8, 2026 | Self-serve signup, trial, and checkout; tactics ranked with RICE |
+| 4: Implementation | ✅ | Dec 11, 2026 | Four stages, Jan 4 to Dec 31, 2027, with gates in February, June, and September |
+| 5: Control | ✅ | Dec 14, 2026 | North Star: weekly invoicing accounts, with input, health, and counter-metrics |
+
+### D. Glossary
 | Term | Definition |
 |------|-----------|
 | Activation | A trial sends its first invoice within 7 days of signup |
@@ -579,4 +599,4 @@ Each metric's action trigger lives in its row above. Here the PM is the Head of 
 
 ---
 
-*Document generated via GSTIC Framework — December 14, 2026*
+*Document generated via MAGSTIC Framework — December 14, 2026*

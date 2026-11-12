@@ -15,7 +15,7 @@
 
 Do this once per project, before the first phase, whatever the entry point.
 
-First check `output/<project-slug>/`. If it already holds phase files, read them, summarize where the project stands, and continue with the next incomplete phase (or the phase the user asked for). Do not re-ask Step 0.
+First check `output/<project-slug>/`. If it holds `0-context.md`, read it and any phase files, summarize where the project stands, and continue with the next incomplete phase (or the phase the user asked for) without re-asking Step 0. If phase files exist but `0-context.md` is missing, ask the Step 0 questions once and save them.
 
 Otherwise, establish project context:
 
@@ -29,10 +29,10 @@ Let's start with the basics:
 4. What's the organizational context? (team size, company, division)
 5. Is this B2B or B2C, and is it a new market entry or an optimization within a known market?
 6. Has any market discovery already been done (research, interviews, sizing, competitor analysis)? Where does it live?
-7. Do you have documents to ground this work (research reports, interview notes, metrics exports, competitor material)? Put them in inputs/<project-slug>/ or give me paths or URLs.
+7. Do you have documents to ground this work (research reports, interview notes, metrics exports, competitor material)? Put them in a folder under inputs/ named after the project in lowercase with hyphens (I'll confirm the exact folder after you answer question 1), or give me paths or URLs.
 ```
 
-Wait for the user's response before proceeding. Carry these answers into every phase and never re-ask them. Use them to calibrate the depth and vocabulary of each phase.
+Wait for the user's response before proceeding. Then state the project slug and the exact `inputs/<project-slug>/` path back to the user, and save the answers verbatim to `output/<project-slug>/0-context.md`. Carry these answers into every phase and never re-ask them. Use them to calibrate the depth and vocabulary of each phase.
 
 For a GSTIC-only run: if the answer to question 6 is "none" or thin (no named target segment and no named alternative), say: "It sounds like we might benefit from running market discovery (Phase 0) first. Want to start there, or proceed directly to Goals?"
 
@@ -102,15 +102,13 @@ The Market Analyst persona (`agents/market-analyst.md`) stays active for all fiv
 5. Gather evidence: pricing benchmarks, cost data, analogous business models
 6. Produce the Business Model deliverable (Lean Canvas, OST, riskiest assumptions), including the **Market Discovery Brief Summary** (section 5 of the template)
 7. Check the 0E exit criteria and print the checklist with ticks
-8. Ask: **"Market discovery is complete. Ready to move into GSTIC strategic planning, or iterate on the business model?"**
+8. Ask: **"Are you satisfied with the business model, or would you like to iterate before we close market discovery?"**
 9. Once confirmed, save to `output/<project-slug>/0e-business-model.md`
 
 ### Transition: Phase 0 → Phase 1
 
-Deliver the 0E → Goals handoff message from `prompts/phase-transitions.md`. Then:
-
-- **Market discovery only:** stop here. Present the Market Discovery Brief Summary and ask: **"Want to continue into GSTIC (Goals), or stop here?"**
-- **Full pipeline:** continue with Step 1 below. Do not repeat Step 0.
+- **Market discovery only:** stop here. Present the Market Discovery Brief Summary (section 5 of `0e-business-model.md`) and deliver the 0E → Goals handoff message from `prompts/phase-transitions.md` with its market-discovery closing line, which asks whether to continue into Goals.
+- **Full pipeline:** deliver the 0E → Goals handoff message from `prompts/phase-transitions.md` with its full-pipeline closing line, then continue with Step 1 below. Do not repeat Step 0.
 
 ---
 
@@ -168,7 +166,7 @@ Deliver the 0E → Goals handoff message from `prompts/phase-transitions.md`. Th
 4. Ask the Analyst's discovery questions for Control, in one message, and wait
 5. Produce the Control deliverable
 6. Check the Control exit criteria and print the checklist with ticks
-7. Ask: **"The plan is complete. Would you like to compile everything into a single brief, or iterate on any phase?"**
+7. Ask: **"Are you satisfied with the Control plan, or would you like to iterate before we close the plan?"**
 8. Once confirmed, save to `output/<project-slug>/5-control.md` and deliver the completion message
 
 ---
@@ -179,7 +177,7 @@ If the user requests a compiled brief:
 
 1. Read `templates/gstic-brief.md`
 2. Read the saved phase files from `output/<project-slug>/` — if any are missing, say which and ask whether to compile anyway
-3. Section 0: insert section 5 (Market Discovery Brief Summary) of `0e-business-model.md` verbatim, or note that market discovery was not conducted
+3. Section 0: insert the six subsections of section 5 (Market Attractiveness through Top Risks) of `0e-business-model.md` verbatim, without the `## 5.` heading line or its italic note; if market discovery was not run, use the one-line note from the template
 4. Insert each GSTIC phase file (`1-goals.md` through `5-control.md`) in its section
-5. Add an Executive Summary at the top (3–5 sentences) and fill in the Phase Completion Tracker
+5. Add an Executive Summary at the top (3–5 sentences); fill in the Phase Completion Tracker, the Key Decisions Log (from decisions and assumptions recorded in the phase files), the Stakeholder Map (from the RACI in `4-implementation.md`), and the Glossary (terms used across phases); delete any appendix table that has nothing to hold
 6. Save as `output/<project-slug>/magstic-brief.md`

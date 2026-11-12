@@ -8,7 +8,7 @@
 
 1. **Start at the entry point's first phase by default.** A full pipeline or market-discovery run begins at 0A; a GSTIC run begins at Goals. If the user asks for a later phase first, use the out-of-sequence message below — never skip a phase silently.
 2. **Each phase produces a deliverable.** No phase is complete until a structured output exists, passes the exit criteria below, and is saved to `output/<project-slug>/`.
-3. **Exit criteria are a gate.** Before asking for confirmation, print the phase's checklist with each item ticked or marked open. Open items block the transition.
+3. **Exit criteria are a gate.** Before asking for confirmation, print the phase's checklist with each item ticked or marked open. Open items block the transition, except the last two of every checklist (user confirmation and the save), which are printed open and ticked once the user confirms and the file is written.
 4. **Reference prior phases.** Every new phase must explicitly cite decisions from earlier phases — read them from `output/<project-slug>/`.
 5. **Offer iteration.** Always ask if the user wants to refine before moving forward.
 6. **Persona shift is explicit.** When changing agents, briefly acknowledge the shift in perspective.
@@ -126,7 +126,12 @@
 
 **Handoff Message:**
 
-> "Market discovery is complete. We've assessed attractiveness, sized the opportunity at TAM $[X] / SAM $[X] / SOM Y1 $[X], identified [target segment] with [core JTBD], defined our differentiation through [thesis], and modeled the business at [unit economics]. Top risks are [1, 2, 3]. Now switching to the **Strategist** — let's define what success looks like and set the objectives."
+> "Market discovery is complete. We've assessed attractiveness, sized the opportunity at TAM $[X] / SAM $[X] / SOM Y1 $[X], identified [target segment] with [core JTBD], defined our differentiation through [thesis], and modeled the business at [unit economics]. Top risks are [1, 2, 3]."
+
+Close with the line for the entry point:
+
+- *Full pipeline:* "Now switching to the **Strategist** — let's define what success looks like and set the objectives."
+- *Market discovery only:* "Want to continue into GSTIC (Goals), or stop here?"
 
 **Context to Carry Forward:**
 - Full Market Discovery Brief Summary (this is the foundational context for all GSTIC phases)
