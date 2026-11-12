@@ -1,0 +1,8 @@
+# Your strategy documents and source material stay on your machine
+output/
+inputs/
+
+# OS and archive noise
+.DS_Store
+._*
+*.zip
